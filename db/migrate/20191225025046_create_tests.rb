@@ -8,6 +8,6 @@ class CreateTests < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     change_column_null(:tests, :title, false)
-    change_column_default(:tests, :level, 0)
+    change_column_default(:tests, :level, from: nil, to: 0)
   end
 end

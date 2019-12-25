@@ -6,6 +6,6 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    change_column_default(:answers, :correct, 'Yes')
+    change_column_default(:answers, :correct, from: nil, to: 'Yes')
   end
 end

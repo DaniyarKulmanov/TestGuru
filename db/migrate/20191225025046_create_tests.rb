@@ -1,13 +1,11 @@
 class CreateTests < ActiveRecord::Migration[6.0]
   def change
     create_table :tests do |t|
-      t.string :title
-      t.integer :level
-      t.integer :c_id
+      t.string :title, null: false
+      t.integer :level, default: 0
+      t.integer :category_id, foreign_key: true, index: true
 
       t.timestamps
     end
-    change_column_null(:tests, :title, false)
-    change_column_default(:tests, :level, from: nil, to: 0)
   end
 end

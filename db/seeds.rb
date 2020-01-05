@@ -7,43 +7,52 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # test data
-answers_list = [
-    [true, 1],
-    [false, 2],
-    [true, 3],
-    [false, 4],
-    [true, 5]
-]
-categories_list = %w( Fronted Backend Mobile )
 questions_list = [
-    ['Ruby creation date?', 3],
-    ['Swift creation date?', 4],
-    ['Ruby concept?', 5],
-    ['Swift concept', 5],
-    ['Ruby web framework?', 3]
+    'Ruby creation date?',
+    'Swift creation date?',
+    'Ruby concept?',
+    'Swift concept',
+    'Ruby web framework?'
 ]
+questions = []
+
 tests_list = [
-    [ 'Ruby', 1, 2 ],
-    [ 'Angular', 1, 1],
-    [ 'Ruby on Rails', 2, 2],
-    [ 'Swift deep learning', 3, 3],
-    [ 'Swift for pro', 3, 3]
+    [ 'Ruby', 1],
+    [ 'Angular', 1],
+    [ 'Ruby on Rails', 2],
+    [ 'Swift deep learning', 3],
+    [ 'Swift for pro', 3]
 ]
+tests = []
+
 users_list = %w( Daniyar Serik Zarina John)
+users = []
+
+categories_list = %w( Fronted Backend Mobile )
+categories = []
 
 # create data in db
-answers_list.each do |type, question_id|
-  Answer.create correct: type, question_id: question_id
+users_list.each do |name|
+ users << User.create(name: name)
 end
 
-categories_list.each { |title| Category.create title: title }
-
-questions_list.each do |body, test_id|
-  Question.create body: body, test_id: test_id
+categories_list.each do |title|
+  categories << Category.create(title: title)
 end
 
-tests_list.each do |title, level, category_id|
-  Test.create title: title, level: level, category_id: category_id
+tests_list.each do |title, level|
+ tests << Test.create(
+            title: title,
+            level: level,
+            category_id: categories.sample.id,
+            user_id: users.sample.id
+          )
 end
 
-users_list.each { |name| User.create name: name }
+questions_list.each do |body|
+  questions << Question.create(body: body, test_id: tests.sample.id)
+end
+
+rand(3..5).times do
+  Answer.create correct: [ true, false ].sample, question_id: questions.sample.id
+end

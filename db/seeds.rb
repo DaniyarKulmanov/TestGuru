@@ -44,8 +44,7 @@ tests_list.each do |title, level|
  tests << Test.create(
             title: title,
             level: level,
-            category_id: categories.sample.id,
-            user_id: users.sample.id
+            category_id: categories.sample.id
           )
 end
 
@@ -55,4 +54,8 @@ end
 
 rand(3..5).times do
   Answer.create correct: [ true, false ].sample, question_id: questions.sample.id
+end
+
+rand(4..7).times do
+  Certification.create test_id: tests.sample.id, user_id: users.sample.id
 end

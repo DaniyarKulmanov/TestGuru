@@ -6,6 +6,6 @@ class Test < ApplicationRecord
       .select(:title)
       .joins(JOIN_CATEGORY)
       .order(title: :desc)
-      .where('categories.title' => category)
+      .where(categories: { title: category })
   end
 end

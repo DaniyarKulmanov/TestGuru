@@ -28,7 +28,7 @@ tests = []
 users_list = %w( Daniyar Serik Zarina John)
 users = []
 
-categories_list = %w( Fronted Backend Mobile )
+categories_list = %w( Frontend Backend Mobile )
 categories = []
 
 # create data in db

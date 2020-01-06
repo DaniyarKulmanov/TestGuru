@@ -4,6 +4,6 @@ class User < ApplicationRecord
   def test_by_level (level)
     Test
       .joins(JOIN_CERTIFICATION)
-      .where level: level, 'certifications.user_id' => self.id
+      .where(level: level, certifications: { user_id: id })
   end
 end

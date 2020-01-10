@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :certifications
   has_many :tests, through: :certifications
+  has_many :created_tests, class_name: 'Test'
 
   def test_by_level (level)
     Test

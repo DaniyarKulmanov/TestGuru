@@ -15,4 +15,9 @@ class Test < ApplicationRecord
   scope :test_by_category, -> (category) {
     select(:title).joins(JOIN_CATEGORY).order(title: :desc).where(categories: {title: category})
   }
+
+  validates :title, presence: true
+  validates :level, numericality: { only_integer: true }
+  validates :category_id, presence: true
+  validates :user_id, presence: true
 end

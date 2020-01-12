@@ -35,7 +35,7 @@ categories = []
 
 # create data in db
 users_list.each do |name|
- users << User.create(name: name)
+ users << User.create(name: name, email: "#{name}@mail.com")
 end
 
 categories_list.each do |title|

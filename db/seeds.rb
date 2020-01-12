@@ -44,7 +44,8 @@ tests_list.each do |title, level|
  tests << Test.create(
             title: title,
             level: level,
-            category_id: categories.sample.id
+            category_id: categories.sample.id,
+            user_id: users.sample.id
           )
 end
 

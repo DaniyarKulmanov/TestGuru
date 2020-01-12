@@ -17,7 +17,8 @@ class Test < ApplicationRecord
   }
 
   validates :title, presence: true
-  validates :level, numericality: { only_integer: true }
+  validates :level, numericality: { only_integer: true, greater_than: 0 }
   validates :category_id, presence: true
   validates :user_id, presence: true
+  validates_uniqueness_of :test_type, scope: [:title, :level]
 end

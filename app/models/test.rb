@@ -1,6 +1,5 @@
 class Test < ApplicationRecord
 
-  INFINITY = Float::INFINITY
   JOIN_CATEGORY = 'INNER JOIN categories ON categories.id = tests.category_id'.freeze
 
   has_many :questions
@@ -11,14 +10,18 @@ class Test < ApplicationRecord
 
   scope :intermediate, -> { where level: 0..1 }
   scope :advanced, -> { where level: 2..4 }
-  scope :pro, -> { where level: 5..INFINITY }
-  scope :test_by_category, -> (category) {
-    select(:title).joins(JOIN_CATEGORY).order(title: :desc).where(categories: {title: category})
-  }
+  scope :pro, -> { where level: 5..Float::INFINITY }
+  scope :by_field, -> (attribute) { select(attribute.to_sym) }
 
   validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than: 0 }
-  validates :category_id, presence: true
-  validates :user_id, presence: true
-  validates_uniqueness_of :test_type, scope: [:title, :level]
+  #TODO
+  validates :title, :level, uniqueness: { scope: [:title, :level] }
+
+  def self.test_by_category (category)
+    Test
+         joins(JOIN_CATEGORY)
+        .order(title: :desc)
+        .where(categories: { title: category })
+  end
 end

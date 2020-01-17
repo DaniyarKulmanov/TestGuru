@@ -7,7 +7,7 @@ class Answer < ApplicationRecord
   private
 
   def validate_answers
-    errors.add(:answers, 'invalid scope') unless (1..3).include? self.question.answers.size
+    errors.add(:answers, 'only 1 - 4 answers allowed') unless (1..3).include? self.question.answers.size
   end
 
   def question_nil?

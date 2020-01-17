@@ -19,9 +19,11 @@ questions = []
 tests_list = [
     [ 'Ruby', 1],
     [ 'Angular', 1],
-    [ 'Ruby on Rails', 2],
-    [ 'Swift deep learning', 3],
-    [ 'Swift for pro', 3]
+    [ 'Ruby on Rails beginner', 1],
+    [ 'Ruby on Rails advanced', 2],
+    [ 'Ruby on Rails for pro', 5],
+    [ 'Swift deep learning', 4],
+    [ 'Swift for pro', 5]
 ]
 tests = []
 
@@ -33,7 +35,7 @@ categories = []
 
 # create data in db
 users_list.each do |name|
- users << User.create(name: name)
+ users << User.create(name: name, email: "#{name}@mail.com")
 end
 
 categories_list.each do |title|

@@ -1,7 +1,5 @@
 class Test < ApplicationRecord
 
-  JOIN_CATEGORY = 'INNER JOIN categories ON categories.id = tests.category_id'.freeze
-
   has_many :questions
   has_many :certifications
   has_many :users, through: :certifications

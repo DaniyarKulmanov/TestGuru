@@ -20,6 +20,6 @@ class Test < ApplicationRecord
   validates :title, :level, uniqueness: { scope: [:title, :level] }
 
   def self.test_by_category(category)
-    Test.category_title(category).select(:title).order(title: :desc)
+    category_title(category).select(:title).order(title: :desc)
   end
 end

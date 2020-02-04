@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :search_test, only: [:index, :show, :destroy]
+  before_action :search_test, only: [:index, :show, :destroy, :create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -13,12 +13,11 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    # @questoin = Question.new
   end
 
   def create
-    question = Question.create(question_params)
-    render plain: question.inspect
+    question = @test.questions.new(question_params)
+    question.save ? rendering(question.inspect) : rendering('Question not saved')
   end
 
   def destroy
@@ -31,7 +30,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :test_id)
+    params.require(:question).permit(:body)
   end
 
   def search_test
@@ -40,5 +39,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_not_found
     render plain: 'No question found'
+  end
+
+  def rendering(content)
+    render plain: content
   end
 end

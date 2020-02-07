@@ -1,9 +1,19 @@
 <p>
+  <strong>Author:</strong>
+  <%= user_name @test.user_id %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @test.title %>
 </p>
 
 <p>
-  <strong>level:</strong>
+  <strong>Level:</strong>
   <%= @test.level %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @test.category.title %>
 </p>

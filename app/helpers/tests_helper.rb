@@ -1,5 +1,5 @@
 module TestsHelper
-  def user_name(id)
-    User.find(id).name
+  def user_name(test)
+    User.find(test.user_id).name
   end
 end

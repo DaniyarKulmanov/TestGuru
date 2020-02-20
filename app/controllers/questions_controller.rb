@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :search_test, only: [:index, :show, :destroy, :create]
+  before_action :find_test, only: [:index, :show, :destroy, :create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
 
   def show
     body = @test.questions.find(params[:id]).body
-    render plain: body
   end
 
   def new
@@ -33,7 +32,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def search_test
+  def find_test
     @test = Test.find(params[:test_id])
   end
 

@@ -1,6 +1,6 @@
 <p>
   <strong>Author:</strong>
-  <%= user_name @test.user_id %>
+  <%= user_name @test %>
 </p>
 
 <p>
@@ -17,3 +17,5 @@
   <strong>Category:</strong>
   <%= @test.category.title %>
 </p>
+
+<%= link_to 'Back', tests_path %>

@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :certifications
   has_many :users, through: :certifications
   belongs_to :category

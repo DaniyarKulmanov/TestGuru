@@ -1,42 +1,5 @@
 <h1>New test</h1>
 
-<%= form_with model: @test, local: true do |form| %>
-    <% if @test.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@test.errors.count, "error") %> prohibited
-            this article from being saved:
-          </h2>
-          <ul>
-            <% @test.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :level %><br>
-    <%= form.text_field :level %>
-  </p>
-
-  <p>
-    <%= form.label :user_id %><br>
-    <%= form.collection_select :user_id, User.all, :id, :name, promt: true %>
-  </p>
-
-  <p>
-    <%= form.label :category_id %><br>
-    <%= form.collection_select :category_id, Category.all, :id, :title, promt: true %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back', tests_path %>

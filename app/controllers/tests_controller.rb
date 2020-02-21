@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: [:show, :edit, :create, :update]
+  before_action :find_test, only: [:show, :edit, :update, :destroy]
 
   def index
     @tests = Test.all
@@ -16,6 +16,8 @@ class TestsController < ApplicationController
   end
 
   def create
+    @test = Test.new(test_params)
+
     if @test.save
       redirect_to @test
     else
@@ -32,7 +34,9 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    
+    @test.destroy
+
+    redirect_to tests_path
   end
 
   private
@@ -42,6 +46,6 @@ class TestsController < ApplicationController
   end
 
   def find_test
-    @test = Test.new(test_params)
+    @test = Test.find(params[:id])
   end
 end

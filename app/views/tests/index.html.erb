@@ -5,9 +5,10 @@
 <table>
   <tr>
     <th>Author</th>
-    <th>title</th>
-    <th>level</th>
-    <th>category</th>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Category</th>
+    <th>Questions</th>
     <th></th>
   </tr>
 
@@ -17,6 +18,7 @@
         <td><%= test.title %></td>
         <td><%= test.level %></td>
         <td><%= test.category.title %></td>
+        <td align="center" ><%= questions_count(test) %></td>
         <td><%= link_to 'Show', test_path(test) %></td>
         <td><%= link_to 'Edit', edit_test_path(test) %></td>
         <td><%= link_to 'Delete', test_path(test),

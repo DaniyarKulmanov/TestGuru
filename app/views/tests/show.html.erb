@@ -18,13 +18,14 @@
   <%= @test.category.title %>
 </p>
 
-<%= render 'questions' %>
-
-<h3>add a question</h3>
-<%= render 'questions/form' %>
-
 <%= link_to 'Back', tests_path %>
 <%= link_to 'Edit', edit_test_path(@test) %>
 <%= link_to 'Delete', test_path(@test),
-                method: :delete,
-                data: { confirm: 'Are you sure?!'}%>
+            method: :delete,
+            data: { confirm: 'Are you sure?!'}%>
+
+<p><%= render 'questions' %></p>
+
+<p><%= link_to 'Create new question', new_test_question_path(@test) %></p>
+
+

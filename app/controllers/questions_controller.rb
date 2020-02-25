@@ -28,8 +28,10 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question = @test.questions.find(params[:id])
+
     if @question.update(question_params)
-      redirect_to @question
+      redirect_to test_question_path(@question)
     else
       render 'edit'
     end

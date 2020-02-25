@@ -2,16 +2,17 @@
   <tr>
     <th align="left">Questions:</th>
   </tr>
-# TODO links do not work
   <% @test.questions.each do |question| %>
-      byebug
       <tr>
         <td><%= question.body %></td>
         <td><%= link_to 'Show', [question.test, question] %></td>
-        <td><%= link_to 'Edit', edit_test_question_path(question.test, question) %></td>
+        <!--<td><%= link_to 'Edit', edit_test_question_path(question.test, question) %></td>-->
         <td><%= link_to 'Delete',[question.test, question],
                         method: :delete,
                         data: { confirm: 'Are you sure?!'}%></td>
       </tr>
   <% end %>
 </table>
+
+
+<p> * TODO edit link not working test/questions -> question/form </p>

@@ -1,6 +1,6 @@
 <p>
   <strong>Author:</strong>
-  <%= user_name @test %>
+  <%= User.find(@test.user_id).name %>
 </p>
 
 <p>

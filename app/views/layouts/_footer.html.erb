@@ -1,7 +1,7 @@
 <footer>
   <p><%= current_year %> </p>
-  <p>Author: <%= author %> </p>
-  <p><%= link_to 'TestGuru', github_url %></p>
-  <p><%= link_to 'Учебный проект в онлайн-школе Thinknetica', thinknetica %></p>
+  <p>Author: <%= SiteVersion::AUTHOR %> </p>
+  <p><%= github_url %></p>
+  <p><%=  link_to 'Учебный проект в онлайн-школе Thinknetica', SiteVersion::AUTHOR_SCHOOL %></p>
   <p><%= link_to 'На страницу тестов', tests_path %></p>
 </footer>

@@ -14,7 +14,7 @@
 
   <% @tests.each do |test| %>
       <tr>
-        <td><%= user_name test %></td>
+        <td><%= User.find(test.user_id).name %></td>
         <td><%= test.title %></td>
         <td><%= test.level %></td>
         <td><%= test.category.title %></td>

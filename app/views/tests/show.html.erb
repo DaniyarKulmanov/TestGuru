@@ -1,0 +1,31 @@
+<p>
+  <strong>Author:</strong>
+  <%= User.find(@test.user_id).name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @test.level %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @test.category.title %>
+</p>
+
+<%= link_to 'Back', tests_path %>
+<%= link_to 'Edit', edit_test_path(@test) %>
+<%= link_to 'Delete', test_path(@test),
+            method: :delete,
+            data: { confirm: 'Are you sure?!'}%>
+
+<p><%= render 'questions' %></p>
+
+<p><%= link_to 'Create new question', new_test_question_path(@test) %></p>
+
+

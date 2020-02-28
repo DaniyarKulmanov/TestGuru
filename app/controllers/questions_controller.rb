@@ -1,30 +1,40 @@
 class QuestionsController < ApplicationController
-  before_action :search_test, only: [:index, :show, :destroy, :create]
+  before_action :find_test, only: [:show, :new, :edit, :create, :update, :destroy]
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-    render  plain: @test.questions.each{ |question| question }
+  def index; end
+
+  def show;  end
+
+  def new;
+    @question = @test.questions.new
   end
 
-  def show
-    body = @test.questions.find(params[:id]).body
-    render plain: body
-  end
-
-  def new
-  end
+  def edit; end
 
   def create
     question = @test.questions.new(question_params)
-    question.save ? rendering(question.inspect) : rendering('Question not saved')
+    if question.save
+      redirect_to test_path(@test)
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_question_path(@test, @question)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @question = @test.questions.find(params[:id])
     @question.destroy
 
-    redirect_to questions_path
+    redirect_to test_path(@test)
   end
 
   private
@@ -33,7 +43,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def search_test
+  def find_test
     @test = Test.find(params[:test_id])
   end
 
@@ -41,7 +51,7 @@ class QuestionsController < ApplicationController
     render plain: 'No question found'
   end
 
-  def rendering(content)
-    render plain: content
+  def find_question
+    @question = @test.questions.find(params[:id])
   end
 end

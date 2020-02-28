@@ -1,0 +1,9 @@
+<table>
+  <tr>
+    <th align="left">Questions:</th>
+  </tr>
+  <% @test.questions.each do |question| %>
+    <% @question = question %>
+    <%= render 'question' %>
+  <% end %>
+</table>

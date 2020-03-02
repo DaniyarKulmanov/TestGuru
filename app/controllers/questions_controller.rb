@@ -15,8 +15,8 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def create
-    question = @test.questions.new(question_params)
-    if question.save
+    @question = @test.questions.new(question_params)
+    if @question.save
       redirect_to test_path(@test)
     else
       render 'new'

@@ -13,4 +13,4 @@
   <%= render @question.answers %>
 </ol>
 
-<td><%= link_to 'Back to test', test_path(@test) %></td>
+<td><%= link_to 'Back to test', test_path(Test.find(@question.test_id)) %></td>

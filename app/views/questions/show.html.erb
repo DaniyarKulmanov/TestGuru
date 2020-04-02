@@ -1,16 +1,16 @@
-<h1>Question</h1>
-
+<h1><%= question_header %></h1>
 <p>
   <strong>Body:</strong>
   <%= @question.body %>
 </p>
 
-<h2>Answers</h2>
+<h3>partial for back_edit_delete</h3>
+<%= link_to 'Back', test_path(Test.find(@question.test_id)) %>
+<%= link_to 'Edit', edit_question_path(@question) %>
+<%= link_to 'Delete', question_path(@question),
+            method: :delete,
+            data: { confirm: 'Are you sure?!'}%>
+
+<p> <%= render 'answers' %> </p>
 
 <%= link_to 'New answer', new_question_answer_path(@question)  %>
-
-<ol>
-  <%= render @question.answers %>
-</ol>
-
-<td><%= link_to 'Back to test', test_path(Test.find(@question.test_id)) %></td>

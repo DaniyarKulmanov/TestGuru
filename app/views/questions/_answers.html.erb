@@ -1,0 +1,9 @@
+<table>
+  <tr>
+    <th align="left">Answers:</th>
+  </tr>
+  <% @question.answers.each do |answer| %>
+    <% @answer = answer %>
+    <%= render 'answer'  %>
+  <% end %>
+</table>

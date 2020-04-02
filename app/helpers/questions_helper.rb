@@ -1,9 +1,13 @@
 module QuestionsHelper
-  def question_header(question)
-    if question.new_record?
-      "New #{@question.test.title} question"
+  def question_header
+    "#{params[:action].capitalize} question"
+  end
+
+  def answer_set #TODO rename to answer_action
+    if params[:action] == 'new'
+      @question.answers.build
     else
-      "Edit #{@question.test.title} question"
+      @answer
     end
   end
 end

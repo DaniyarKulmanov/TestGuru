@@ -1,0 +1,6 @@
+<h1><%= answer_header %></h1>
+
+<%= render 'form', answer: @answer %>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', question_path(@answer.question_id) %>
